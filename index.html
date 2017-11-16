@@ -116,20 +116,24 @@
                   <section>
                     <h3>UC QuakeStudies</h3>
                     <ul>
-                      <li>Largest content node in CEISMIC:<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                      <li>Largest content node in CEISMIC</li>
                       <li>153,442 objects in 1,842 collections</li>
                       <li>Photos, newspapers, blog posts, articles, books, video, audio, transcripts, 3D panoramas</li>
                       <li>PDF, MP4, MP3, text, zip</li>
                     </ul>
+                  </section>
+
+                  <section data-background="img/quakestudies_home.png">
+                    <!--<h3>QS home</h3>-->
                   </section>
                 <!--</section>-->
 
                 <!-- What is Islandora? -->
                 <!--<section>-->
                   <!-- Slide with full background image -->
-                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                  <!--<section data-background="img/kenton_chambers_feb_2011.jpg">
                       <h3 style="color: white">What is Islandora?</h3>
-                  </section>
+                  </section>-->
 
                   <!-- Slide with list items (list items are displayed at once) -->
                   <section>
@@ -144,13 +148,41 @@
                   <section>
                     <h3>Examples of Islandora</h3>
                     <ul>
-                      <li>http://islandscholar.ca (IR)</li>
-                      <li>Simon Fraser University (RDM)</li>
-                      <li>Uni of Rochester maybragdon diaraies</li>
-                      <li>Vancouver Public Library (DAMS)</li>
-                      <li>QuakeStudies archive at UC</li>
+                      <li><a href="http://islandscholar.ca/islandora/search/Search%20IslandScholar%3A?type=dismax">UPEI Island Scholar</a> (IR)</li>
+                      <li><a href="https://researchdata.sfu.ca/islandora/object/islandora%3Aroot">SFU Research Data Repository</a> (RDM)</li>
+                      <li><a href="http://thisvancouver.vpl.ca/story-city">Vancouver Public Library Story City</a> (DCM)</li>
+                      <li><a href="https://maybragdon.lib.rochester.edu/">Uni of Rochester May Bragdon diaries</a> (DCM)</li>
+                      <li>QuakeStudies archive at UC (DCM)</li>
                     </ul>
                   </section>
+
+                  <section data-background="img/islandscholar.ca_islandora_search_mdpi.png">
+                    <!--<h3>UPEI</h3>-->
+                  </section>
+
+                  <section data-background="img/researchdata.sfu.ca_islandora_object_islandora_mdpi.png">
+                    <!--<h3>researchdata.sfu.ca</h3>-->
+                  </section>
+
+                  <section data-background="img/thisvancouver.vpl.ca_story-city_mdpi.png">
+                    <!--<h3>thisvancouver.vpl.ca</h3>-->
+                  </section>
+                  <section data-background="img/thisvancouver.vpl.ca_story-city_mdpi_story.png">
+                    <!--<h3>thisvancouver.vpl.ca</h3>-->
+                  </section>
+
+                  <section data-background="img/maybragdon.lib.rochester.edu_mdpi.png">
+                    <!--<h3>https://maybragdon.lib.rochester.edu/</h3>-->
+                  </section>
+                  <section data-background="img/maybragdon.lib.rochester.edu_islandora_object_maybragdon-524_mdpi.png">
+                    <!--<h3>https://maybragdon.lib.rochester.edu/</h3>-->
+                  </section>
+                  <section data-background="img/maybragdon.lib.rochester.edu_islandora_object_maybragdon-524_mdpi_popup.png">
+                    <!--<h3>https://maybragdon.lib.rochester.edu/</h3>-->
+                  </section>
+
+
+
 
                   <section>
                     <h3>How does it work?</h3>
@@ -178,14 +210,14 @@
                   <!--<section data-background="img/kenton_chambers_feb_2011.jpg">
                       <h3 style="color: white">Migration</h3>
                   </section>-->
-                  <section>
+                  <!--<section>
                     <h3>Migration</h3>
                     <ul>
                       <li>Motivation for migration</li>
                       <li>Discovery</li>
                       <li>Migration</li>
                     </ul>
-                  </section>
+                  </section>-->
                   <section>
                     <h3>Motivation</h3>
                     <ul>
@@ -215,14 +247,36 @@
                   </ul>
                 </section>
 
+                <!-- Slide with code block -->
+        				<section>
+        					<h3>Migration: new ontology</h3>
+                  <p>RDF: DC, DCTERMS, schema.org, DigitalNZ, QSR</p>
+
+                  <pre><code style="font-size:.7em" data-trim contenteditable>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:schema="http://schema.org" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:qsr="http://quakestudies.canterbury.ac.nz" xmlns:dnz="http://digitalnz.org/dummy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                      <dc:title>Crack&apos;d for Christchurch Photograph 117</dc:title>
+                      <dc:identifier>qsr-object:283082</dc:identifier>
+                      <dc:date>2014-02-01 11:11:11</dc:date>
+                      <dc:description>&lt;p&gt;A photograph of Jenny Cooper taking a break in front of the Crack&apos;d for Christchurch armchair artwork. The Crack&apos;d for Christchurch team have been working on the artwork in a garage.&lt;/p&gt;&lt;p&gt;Crack&apos;d for Christchurch comments, &quot;February 2014. The work continues through the summer and into the winter.&quot;&lt;/p&gt;</dc:description>
+                      <dc:subject>armchair</dc:subject>
+                      <dc:subject>Arts, Culture and Society</dc:subject>
+                      <dcterms:spatial>-43.6030,172.7224</dcterms:spatial>
+                      <dc:publisher>Crack&apos;d for Christchurch [qsr-party:357]</dc:publisher>
+                      <dc:type>Still Image</dc:type>
+                      <dc:format>image/jpeg</dc:format>
+                      <dc:rights>Creative Commons BY-NC-ND 3.0 NZ [qsr-licence:104]</dc:rights>
+                      <qsr:creator_credit>foobar</qsr:creator_credit>
+                      <dnz:landing_url>https://quakestudies2.canterbury.ac.nz/store/object/283082</dnz:landing_url>
+                    </rdf:RDF></code></pre>
+        				</section>
+
                 <section>
                   <h3>Migration</h3>
                   <ul>
-                    <li>New ontology: DC -> RDF</li>
-                    <li>RDF: DC, DCTERMS, schema.org, DigitalNZ, QSR</li>
+                    <li>New ontology: Objects -> Collection, Compound Object, skip</li>
+                    <li>Migrate <em>through</em> Drupal to Fedora (via Tuque)</li>
                     <li>Migrate classes for Collection & Objects</li>
                     <li>Object splits to PDF CModel, Image CModel etc.</li>
-                    <li>Migrate <em>through</em> Drupal to Fedora (via Tuque)</li>
                   </ul>
                 </section>
 
@@ -251,6 +305,10 @@
                   </ul>
                 </section>
 
+                <section data-background="img/collection_tree.png">
+                  <!--<h3>QS home</h3>-->
+                </section>
+
                 <section>
                   <h3>Challenges/Tips</h3>
                   <ul>
@@ -261,6 +319,10 @@
                     <li>--idlist expansion</li>
                     <li>multiplexing migration</li>
                   </ul>
+                </section>
+
+                <section data-background="img/quakestudies_islandora_home.png">
+                  <!--<h3>QS home</h3>-->
                 </section>
               <!--</section>-->
 
