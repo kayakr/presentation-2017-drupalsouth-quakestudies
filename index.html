@@ -97,7 +97,7 @@
 
 
                 <!-- What is QuakeStudies? -->
-                <section>
+                <!--<section>-->
                   <!-- Slide with full background image -->
                   <section data-background="img/kenton_chambers_feb_2011.jpg">
                       <h3 style="color: white">What is QuakeStudies?</h3>
@@ -106,7 +106,7 @@
 
                   <section data-background="img/IMG_1486.jpg">
                     <h3>Canterbury Earthquakes</h3>
-                    <ul>
+                    <ul style="position:relative">
                       <li>4 Sep 2010, 22 Feb 2011, etc.</li>
                     </ul>
                     <small class="caption">Photo: J Hunt, CC-BY</small>
@@ -122,10 +122,10 @@
                       <li>PDF, MP4, MP3, text, zip</li>
                     </ul>
                   </section>
-                </section>
+                <!--</section>-->
 
                 <!-- What is Islandora? -->
-                <section>
+                <!--<section>-->
                   <!-- Slide with full background image -->
                   <section data-background="img/kenton_chambers_feb_2011.jpg">
                       <h3 style="color: white">What is Islandora?</h3>
@@ -154,8 +154,8 @@
 
                   <section>
                     <h3>How does it work?</h3>
-                    <ul>
-                      <li>Datastreams: Binary + XML (e.g. RELS-EXT, MODS, RDF, DC, OBJ, TN)</li>
+                    <ul style="font-size:.8em">
+                      <li><img class="img-right" src="img/DOexample.png" alt="Fedora datastreams"/>Datastreams: Binary + XML (e.g. RELS-EXT, MODS, RDF, DC, OBJ, TN)</li>
                       <li>Solution packs for PDF, Basic Image, Large Image, Video, Audio, Books, etc.</li>
                       <li>Viewers: Mozilla pdf.js, Internet Archive Book Viewer, video.js, OpenSeadragon etc.</li>
                     </ul>
@@ -171,13 +171,13 @@
                       <li>Tika, Tesseract OCR, LAME, ffmpeg, FITS, Djatoka et al</li>
                     </ul>
                   </section>
-                </section>
+                <!--</section>-->
 
-                <section>
+                <!--<section>-->
                   <!-- Slide with full background image -->
-                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                  <!--<section data-background="img/kenton_chambers_feb_2011.jpg">
                       <h3 style="color: white">Migration</h3>
-                  </section>
+                  </section>-->
                   <section>
                     <h3>Migration</h3>
                     <ul>
@@ -190,18 +190,24 @@
                     <h3>Motivation</h3>
                     <ul>
                       <li>One-off custom software base -> Community codebase</li>
-                      <li>Revise & simplify ontology</li>
                       <li>Niggling bugs & issues, esp. re security model</li>
                       <li>Improvements to search, maps, UI.</li>
                       <li>Responsive design</li>
+                      <li>Revise & simplify ontology</li>
                     </ul>
                   </section>
-                </section>
+
+                  <!-- Large image slide -->
+                  <section class="image-slide">
+                    <h3>QuakeStudies ontology</h3>
+                    <a href="img/ceismic_jh.dot.gif"><img style="height:400px; width:800px" src="img/ceismic_jh.dot.gif" alt=""></a>
+                  </section>
+                <!--</section>-->
 
                 <section>
                   <h3>Discovery</h3>
                   <ul>
-                    <li>Drupal content types from legacy ontology [ceismic_jh.dot.gif]</li>
+                    <li>Drupal content types from legacy ontology (Collection, Object, Part etc.)</li>
                     <li>Drupal Migrate framework, pulling from Fedora API as XML</li>
                     <li>Views: table views, export as CSV</li>
                     <li>CSV -> OpenRefine, text facets, cleaning</li>
@@ -216,13 +222,25 @@
                     <li>RDF: DC, DCTERMS, schema.org, DigitalNZ, QSR</li>
                     <li>Migrate classes for Collection & Objects</li>
                     <li>Object splits to PDF CModel, Image CModel etc.</li>
-                    <li>MIgrate <em>through</em> Drupal to Fedora (via Tuque)</li>
+                    <li>Migrate <em>through</em> Drupal to Fedora (via Tuque)</li>
                   </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                  <h3>MigrateDestinationFedoraObject</h3>
+                  <a href="img/MigrateDestinationFedoraObject_class.png"><img src="img/MigrateDestinationFedoraObject_class.png" alt=""></a>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                  <h3>drush ms</h3>
+                  <a href="img/drush_ms_screenshot.png"><img src="img/drush_ms_screenshot.png" alt=""></a>
                 </section>
 
                 <section>
                   <h3>Order of migration</h3>
-                  <ul>
+                  <ul style="font-size:.8em">
                     <li>1. Licence (these have no dependencies)</li>
                     <li>2. Place (based on Address and Position)</li>
                     <li>3. Event (based on Event and Datetime)</li>
@@ -230,21 +248,27 @@
                     <li>5. Categories</li>
                     <li>6. Collection</li>
                     <li>7. Objects & Parts</li>
-                </section>
-
-                <section>
-                  <h3>Challenges</h3>
-                  <ul>
-                    <li>>150,000 objects, 1.3TB, VPN, transcoding, etc.</li>
-                    <li>order of migration</li>
                   </ul>
                 </section>
 
                 <section>
+                  <h3>Challenges/Tips</h3>
+                  <ul>
+                    <li>83MB XML</li>
+                    <li>DNS timeouts?</li>
+                    <li>>150,000 objects, 1.3TB, VPN, transcoding, etc.</li>
+                    <li>order of migration</li>
+                    <li>--idlist expansion</li>
+                    <li>multiplexing migration</li>
+                  </ul>
+                </section>
+              <!--</section>-->
+
+              <!--<section>-->
                   <!-- Slide with full background image -->
-                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                  <!--<section data-background="img/kenton_chambers_feb_2011.jpg">
                     <h3 style="color: white">Future</h3>
-                  </section>
+                  </section>-->
                   <section>
                     <h3>Future for QuakeStudies</h3>
                     <ul>
@@ -258,11 +282,13 @@
                   <section>
                     <h3>Future for Islandora</h3>
                     <ul>
-                      <li>Islandora CLAW: Drupal 8 & Fedora Commons 4</li>
-                      <li>W3C Linked Data Platform</li>
+                      <li><img class="img-right" src="img/2dfb463a-1dec-11e6-9089-06df94ef3f37.png" alt="Fedora datastreams"/><a href="https://islandora.ca/CLAW">Islandora CLAW</a>: Drupal 8 & Fedora Commons 4</li>
+                      <li>W3C <a href="https://islandora-claw.github.io/CLAW/user-documentation/intro-to-ld-for-claw/">Linked Data Platform</a> & RDF</li>
+                      <li>Portland Common Data Model (<a href="http://pcdm.org/2016/04/18/models">PCDM</a>)</li>
+                      <li><a href="https://islandora-claw.github.io/CLAW/crayfish/README/">microservices</a>, <a href="https://wiki.duraspace.org/display/FF/Design+-+API+Extension+Architecture">API-X</a></li>
                     </ul>
                   </section>
-                </section>
+                <!--</section>-->
 
                 <section>
                   <h3>Questions</h3>
