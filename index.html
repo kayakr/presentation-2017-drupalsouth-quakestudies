@@ -1,49 +1,431 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
 
-		<title>reveal.js</title>
+    <head>
+        <meta charset="utf-8">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+        <title>Migrating QuakeStudies to Islandora, DrupalSouth 2017</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <meta name="author" content="Catalyst">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+        /* photo caption */
+        .reveal .caption {
+            position: absolute;
+            bottom: -250%;
+            right: -2%;
+            color: white;
+            font-size: 0.5em;
+        }
+        .reveal .caption a {
+            background: #FFF;
+            color: #666;
+            padding: 10px;
+            border: 1px dashed #999;
+        }
+
+        .reveal sub {
+          color: #777;
+          font-size: 0.6em;
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h3>Case Study: Migrating QuakeStudies to Islandora</h3>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <p class="small-text">
+                        Presented by Jonathan Hunt <a href="https://twitter.com/kayakr">@kayakr</a>
+                    </p>
+                </section>
+
+                <!-- Slide with list items (list items are displayed at once) -->
+                <section>
+                  <h3>Migrating QuakeStudies to Islandora</h3>
+                  <ul>
+                    <li>What is QuakeStudies, Islandora? <img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                    <li>Migration process: discovery, migration, challenges</li>
+                    <li>Future of QuakeStudies</li>
+                    <li>Future of Islandora</li>
+                  </ul>
+                </section>
+
+
+                <!-- What is QuakeStudies? -->
+                <section>
+                  <!-- Slide with full background image -->
+                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                      <h3 style="color: white">What is QuakeStudies?</h3>
+                      <small class="caption">Photo: J Hunt, CC-BY</small>
+                  </section>
+
+                  <section data-background="img/IMG_1486.jpg">
+                    <h3>Canterbury Earthquakes</h3>
+                    <ul>
+                      <li>4 Sep 2010, 22 Feb 2011, etc.</li>
+                    </ul>
+                    <small class="caption">Photo: J Hunt, CC-BY</small>
+                  </section>
+
+                  <!-- Slide with list items (list items are displayed at once) -->
+                  <section>
+                    <h3>UC QuakeStudies</h3>
+                    <ul>
+                      <li>Largest content node in CEISMIC:<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                      <li>153,442 objects in 1,842 collections</li>
+                      <li>Photos, newspapers, blog posts, articles, books, video, audio, transcripts, 3D panoramas</li>
+                      <li>PDF, MP4, MP3, text, zip</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <!-- What is Islandora? -->
+                <section>
+                  <!-- Slide with full background image -->
+                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                      <h3 style="color: white">What is Islandora?</h3>
+                  </section>
+
+                  <!-- Slide with list items (list items are displayed at once) -->
+                  <section>
+                    <h3>What is Islandora?</h3>
+                    <ul>
+                      <li>Started 2006 by University of Prince Edward Island's Robertson Library</li>
+                      <li>Drupal front-end for FEDORA, indexed into Solr, Mulgara</li>
+                      <li>Institutional Repository (IR), Digital Collection management (DCM), Research Data Management (RDM)</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3>Examples of Islandora</h3>
+                    <ul>
+                      <li>http://islandscholar.ca (IR)</li>
+                      <li>Simon Fraser University (RDM)</li>
+                      <li>Uni of Rochester maybragdon diaraies</li>
+                      <li>Vancouver Public Library (DAMS)</li>
+                      <li>QuakeStudies archive at UC</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3>How does it work?</h3>
+                    <ul>
+                      <li>Datastreams: Binary + XML (e.g. RELS-EXT, MODS, RDF, DC, OBJ, TN)</li>
+                      <li>Solution packs for PDF, Basic Image, Large Image, Video, Audio, Books, etc.</li>
+                      <li>Viewers: Mozilla pdf.js, Internet Archive Book Viewer, video.js, OpenSeadragon etc.</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3>System architecture</h3>
+                    <ul>
+                      <li>Drupal + Fedora + Solr</li>
+                      <li>MySQL / Mulgara (some Blazegraph)</li>
+                      <li>Gsearch</li>
+                      <li>Drupal Filter</li>
+                      <li>Tika, Tesseract OCR, LAME, ffmpeg, FITS, Djatoka et al</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section>
+                  <!-- Slide with full background image -->
+                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                      <h3 style="color: white">Migration</h3>
+                  </section>
+                  <section>
+                    <h3>Migration</h3>
+                    <ul>
+                      <li>Motivation for migration</li>
+                      <li>Discovery</li>
+                      <li>Migration</li>
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Motivation</h3>
+                    <ul>
+                      <li>One-off custom software base -> Community codebase</li>
+                      <li>Revise & simplify ontology</li>
+                      <li>Niggling bugs & issues, esp. re security model</li>
+                      <li>Improvements to search, maps, UI.</li>
+                      <li>Responsive design</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section>
+                  <h3>Discovery</h3>
+                  <ul>
+                    <li>Drupal content types from legacy ontology [ceismic_jh.dot.gif]</li>
+                    <li>Drupal Migrate framework, pulling from Fedora API as XML</li>
+                    <li>Views: table views, export as CSV</li>
+                    <li>CSV -> OpenRefine, text facets, cleaning</li>
+                    <li>Some custom SPARQL queries</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h3>Migration</h3>
+                  <ul>
+                    <li>New ontology: DC -> RDF</li>
+                    <li>RDF: DC, DCTERMS, schema.org, DigitalNZ, QSR</li>
+                    <li>Migrate classes for Collection & Objects</li>
+                    <li>Object splits to PDF CModel, Image CModel etc.</li>
+                    <li>MIgrate <em>through</em> Drupal to Fedora (via Tuque)</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h3>Order of migration</h3>
+                  <ul>
+                    <li>1. Licence (these have no dependencies)</li>
+                    <li>2. Place (based on Address and Position)</li>
+                    <li>3. Event (based on Event and Datetime)</li>
+                    <li>4. Party (including Content Partner), depends on Address.</li>
+                    <li>5. Categories</li>
+                    <li>6. Collection</li>
+                    <li>7. Objects & Parts</li>
+                </section>
+
+                <section>
+                  <h3>Challenges</h3>
+                  <ul>
+                    <li>>150,000 objects, 1.3TB, VPN, transcoding, etc.</li>
+                    <li>order of migration</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <!-- Slide with full background image -->
+                  <section data-background="img/kenton_chambers_feb_2011.jpg">
+                    <h3 style="color: white">Future</h3>
+                  </section>
+                  <section>
+                    <h3>Future for QuakeStudies</h3>
+                    <ul>
+                      <li>Maps, spatial search</li>
+                      <li>LINZ Street address lookup</li>
+                      <li>Improved displays for content</li>
+                      <li>Islandora 7.x-1.0 released last week</li>
+                      <li>API use</li>
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Future for Islandora</h3>
+                    <ul>
+                      <li>Islandora CLAW: Drupal 8 & Fedora Commons 4</li>
+                      <li>W3C Linked Data Platform</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section>
+                  <h3>Questions</h3>
+                </section>
+
+                <!-- Section title slide with big colour dot -->
+                <section class="title-slide">
+                    <h2 class="orange">Title goes here</h2>
+                </section>
+
+				<!-- Slide with a large title -->
+				<section>
+					<h2>Large title</h2>
+                    <aside class="notes">
+                        This will only display in the notes window.
+                    </aside>
+				</section>
+
+				<!-- Large image slide -->
+				<section class="image-slide">
+					<h3>Title</h3>
+					<img src="img/800x400.gif" alt="">
+				</section>
+
+				<!-- Slide with list items (list items are displayed at once) -->
+				<section>
+					<h3>List title</h3>
+					<ul>
+						<li>List item <img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+						<li>List item</li>
+						<li>List item</li>
+					</ul>
+				</section>
+
+				<!-- Slide with list items (fragmented list items) -->
+				<section>
+					<h3>Fragmented list</h3>
+					<ul>
+						<li class="fragment">List item</li>
+						<li class="fragment">List item</li>
+						<li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
+					</ul>
+				</section>
+
+                <!-- Slide with vertical slides underneath  -->
+                <section>
+                    <!-- Horizontal slide (This is one the same level as slide above) -->
+                    <section class="title-slide banner-3">
+                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
+                    </section>
+
+                    <!-- The following slides are vertical, use down arrow key to navigate -->
+					<!-- Centered paragraph  -->
+					<section>
+						<h3>Paragraph</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
+					</section>
+
+					<!-- Blockquote  -->
+					<section>
+						<h3>Blockquote</h3>
+						<blockquote class="quotation-marks">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.
+						</blockquote>
+					</section>
+
+					<!-- Nested lists-->
+					<section>
+						<h3>Nested lists</h3>
+							<ul>
+								<li>One</li>
+								<li>Two</li>
+								<li>Three</li>
+									<ul>
+										<li>Nested One</li>
+										<li>Nested Two</li>
+									</ul>
+							</ul>
+					</section>
+				</section>
+
+				<!-- Slide with code block -->
+				<section>
+					<h3>Title</h3>
+					<p>Some text</p>
+                    <pre><code data-trim contenteditable>
+function linkify( selector ) {
+    if( supports3DTransforms ) {
+
+        var nodes = document.querySelectorAll( selector );
+
+        for( var i = 0, len = nodes.length; i < len; i++ ) {
+            var node = nodes[i];
+
+            if( !node.className ) {
+                node.className += ' roll';
+            }
+        }
+    }
+}
+                    </code></pre>
+				</section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/800x600.gif">
+                    <h3>Image backgrounds</h3>
+                </section>
+
+				<!-- Slide with Catalyst slogan -->
+				<section class="image-slide">
+					<img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
+				</section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div class="catalyst-logo-footer">Catalyst</div>
+                    <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                    <div class="open-source-technologists">open source technologists</div>
+                    <!-- <div class="freedom-to-innovate">freedom to innovate</div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
 </html>
